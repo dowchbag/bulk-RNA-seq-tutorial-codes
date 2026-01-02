@@ -32,7 +32,7 @@ phag_res <- lfcShrink(phag_dds, coef="apoe_APOE4_vs_APOE3", type="normal", res=p
 
 
 
-####MANUAL 
+####MANUALLY GENERATING VOLCANO PLOT USING GGPLOT2 
 
 de <- as.data.frame(phag_res)
 de <- de[complete.cases(de), ] 
@@ -69,7 +69,7 @@ ggplot(data=de, aes(x=log2FoldChange, y=-log10(pvalue), col=diffexpressed, label
 
 
 
-#### ENHANCED VOLCANO
+#### AUTOMATICALLY GENERATING A PLOT USING ENHANCEDVOLCANO
 
 EnhancedVolcano(phag_res,
                 lab = rownames(phag_res),
@@ -79,6 +79,7 @@ EnhancedVolcano(phag_res,
                 FCcutoff = 0.5, 
                 selectLab = label_genes, 
                 drawConnectors = TRUE)
+
 
 
 
